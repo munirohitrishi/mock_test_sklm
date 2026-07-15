@@ -1,1 +1,74 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>పరీక్ష | జ్యోతిరావు ఫూలే స్టడీ సర్కిల్</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="exam-header">
+    <div>
+      <div class="title">జ్యోతిరావు ఫూలే స్టడీ సర్కిల్, శ్రీకాకుళం — గ్రూప్-2 మాక్ టెస్ట్</div>
+      <div class="sub">భౌగోళిక శాస్త్రం &nbsp;|&nbsp; అభ్యర్థి: {{ student_name }}</div>
+    </div>
+    <div id="timer" class="timer">--:--:--</div>
+  </div>
 
+  <div class="exam-body">
+    <!-- Main question area -->
+    <div class="q-card">
+      <div class="q-meta">
+        <span>ప్రశ్న <strong id="qNum">1</strong> / <span id="qTotal">100</span></span>
+        <span id="qTopic"></span>
+      </div>
+      <div class="q-text" id="qText">లోడ్ అవుతోంది…</div>
+      <div id="options"></div>
+
+      <div class="q-actions">
+        <button class="btn btn-outline" id="prevBtn">« మునుపటి (Previous)</button>
+        <button class="btn btn-outline" id="clearBtn">క్లియర్ (Clear Response)</button>
+        <button class="btn btn-purple" id="markBtn">మార్క్ ఫర్ రివ్యూ</button>
+        <span class="spacer"></span>
+        <button class="btn" id="saveNextBtn">సేవ్ &amp; నెక్స్ట్ »</button>
+      </div>
+    </div>
+
+    <!-- Navigator -->
+    <div class="nav-panel">
+      <h3>ప్రశ్న నావిగేటర్</h3>
+      <div class="legend">
+        <span><i class="dot nv"></i> సందర్శించలేదు (Not Visited)</span>
+        <span><i class="dot vs"></i> సందర్శించారు (Visited)</span>
+        <span><i class="dot an"></i> సమాధానం ఇచ్చారు (Answered)</span>
+        <span><i class="dot mr"></i> రివ్యూ కోసం (Marked)</span>
+      </div>
+      <div class="grid" id="grid"></div>
+      <div class="submit-row">
+        <button class="btn btn-secondary btn-block" id="submitBtn">పరీక్ష సబ్మిట్ చేయండి</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fullscreen / warning overlay -->
+  <div class="overlay" id="overlay">
+    <div class="box">
+      <h3 id="ovTitle">హెచ్చరిక</h3>
+      <p id="ovMsg"></p>
+      <button class="btn" id="ovBtn">కొనసాగించు (Continue)</button>
+    </div>
+  </div>
+
+  <script>
+    window.EXAM_CONFIG = {
+      durationMinutes: {{ duration_minutes }},
+      apiQuestions: "{{ url_for('api_questions') }}",
+      apiSubmit: "{{ url_for('api_submit') }}"
+    };
+  </script>
+  <script src="{{ url_for('static', filename='js/test.js') }}"></script>
+</body>
+</html>

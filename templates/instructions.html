@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>సూచనలు | జ్యోతిరావు ఫూలే స్టడీ సర్కిల్</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="topbar">
+    <h1>జ్యోతిరావు ఫూలే స్టడీ సర్కిల్, శ్రీకాకుళం</h1>
+    <p>APPSC గ్రూప్-2 మాక్ టెస్ట్ — భౌగోళిక శాస్త్రం</p>
+  </div>
+
+  <div class="wrap">
+    <div class="card">
+      <h2>పరీక్ష సూచనలు</h2>
+      <ul class="inst-list">
+        <li><strong>పరీక్ష సమయం:</strong> {{ meta.duration_minutes }} నిమిషాలు (2.5 గంటలు)</li>
+        <li><strong>మొత్తం ప్రశ్నలు:</strong> {{ meta.total_questions }}</li>
+        <li><strong>ప్రతి సరైన సమాధానానికి:</strong> 1 మార్కు</li>
+        <li><strong>తప్పు సమాధానానికి:</strong> 1/3 మార్కు కట్ (నెగటివ్ మార్కింగ్)</li>
+        <li>ప్రశ్నలకు సమాధానాలు గుర్తించడానికి <strong>Save &amp; Next</strong> బటన్ ఉపయోగించండి.</li>
+        <li>ఎడమ వైపు ప్యానెల్‌లోని ప్రశ్న సంఖ్యల గ్రిడ్ ద్వారా ఏ ప్రశ్నకైనా నేరుగా వెళ్ళవచ్చు.</li>
+        <li>పరీక్ష <strong>ఫుల్‌స్క్రీన్</strong> మోడ్‌లో జరుగుతుంది. ఫుల్‌స్క్రీన్ నుండి బయటకు వస్తే హెచ్చరిక కనిపిస్తుంది.</li>
+        <li>సమయం 15 నిమిషాలు మరియు 5 నిమిషాలు మిగిలి ఉన్నప్పుడు హెచ్చరిక వస్తుంది.</li>
+        <li>సమయం <strong>00:00:00</strong> అయిన వెంటనే పరీక్ష ఆటోమేటిక్‌గా సబ్మిట్ అవుతుంది.</li>
+        <li>పరీక్ష మధ్యలో బ్రౌజర్ క్లోజ్ చేస్తే మీ ప్రయత్నం ముగిసినట్లుగా పరిగణించబడుతుంది.</li>
+      </ul>
+
+      <div class="check-row">
+        <input type="checkbox" id="agree">
+        <label for="agree">నేను పైన ఉన్న సూచనలన్నీ చదివి అర్థం చేసుకున్నాను, పరీక్షకు సిద్ధమైనాను.</label>
+      </div>
+
+      <a href="{{ url_for('test') }}" id="startBtn" class="btn btn-block"
+         style="text-align:center; pointer-events:none; opacity:.5;">పరీక్ష ప్రారంభించు »</a>
+    </div>
+  </div>
+
+  <script>
+    const agree = document.getElementById('agree');
+    const startBtn = document.getElementById('startBtn');
+    agree.addEventListener('change', function () {
+      if (agree.checked) {
+        startBtn.style.pointerEvents = 'auto';
+        startBtn.style.opacity = '1';
+      } else {
+        startBtn.style.pointerEvents = 'none';
+        startBtn.style.opacity = '.5';
+      }
+    });
+  </script>
+</body>
+</html>

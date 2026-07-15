@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ఫలితం | జ్యోతిరావు ఫూలే స్టడీ సర్కిల్</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="topbar">
+    <h1>జ్యోతిరావు ఫూలే స్టడీ సర్కిల్, శ్రీకాకుళం</h1>
+    <p>APPSC గ్రూప్-2 మాక్ టెస్ట్ — భౌగోళిక శాస్త్రం</p>
+  </div>
+
+  <div class="wrap">
+    <div class="card">
+      <h2>పరీక్ష పూర్తయింది ✓</h2>
+      <p class="hint">అభ్యర్థి: <strong>{{ student.name }}</strong> &nbsp;|&nbsp; మొబైల్: {{ student.mobile }}</p>
+
+      <div class="score-big">{{ student.score }} మార్కులు</div>
+      <p style="text-align:center; color:var(--muted); margin-top:0;">
+        (మొత్తం {{ answered }} ప్రశ్నలకు గాను &nbsp;·&nbsp; నెగటివ్ మార్కింగ్: 1/3)
+      </p>
+
+      <div class="stat-grid">
+        <div class="stat c">
+          <div class="num">{{ student.correct }}</div>
+          <div class="lbl">సరైనవి (Correct)</div>
+        </div>
+        <div class="stat w">
+          <div class="num">{{ student.wrong }}</div>
+          <div class="lbl">తప్పులు (Wrong)</div>
+        </div>
+        <div class="stat u">
+          <div class="num">{{ student.unattempted }}</div>
+          <div class="lbl">వదిలేసినవి (Unattempted)</div>
+        </div>
+      </div>
+
+      <p style="text-align:center; margin-top:24px; color:var(--muted);">
+        మీ ఫలితం విజయవంతంగా సేవ్ చేయబడింది. పరీక్షలో పాల్గొన్నందుకు ధన్యవాదాలు.
+      </p>
+    </div>
+  </div>
+</body>
+</html>

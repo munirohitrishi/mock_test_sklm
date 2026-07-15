@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>నమోదు | జ్యోతిరావు ఫూలే స్టడీ సర్కిల్</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="topbar">
+    <h1>జ్యోతిరావు ఫూలే స్టడీ సర్కిల్, శ్రీకాకుళం</h1>
+    <p>APPSC గ్రూప్-2 మాక్ టెస్ట్ — భౌగోళిక శాస్త్రం (Geography)</p>
+  </div>
+
+  <div class="wrap">
+    <div class="card">
+      <h2>విద్యార్థి నమోదు</h2>
+      <p class="hint">పరీక్ష ప్రారంభించడానికి ముందు దయచేసి మీ వివరాలు నమోదు చేయండి. <strong>ఒక్కసారి మాత్రమే ప్రయత్నించవచ్చు.</strong></p>
+
+      {% if errors %}
+      <div class="errors">
+        <ul>
+          {% for e in errors %}<li>{{ e }}</li>{% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+      <form method="POST" action="{{ url_for('register') }}" id="regForm" novalidate>
+        <div class="field">
+          <label>పూర్తి పేరు <span class="en">(Full Name)</span> *</label>
+          <input type="text" name="name" value="{{ form.name or '' }}" required>
+        </div>
+
+        <div class="field">
+          <label>మొబైల్ నంబర్ <span class="en">(Mobile Number)</span> *</label>
+          <input type="tel" name="mobile" inputmode="numeric" maxlength="10"
+                 pattern="\d{10}" value="{{ form.mobile or '' }}" required>
+          <div class="hint">సరిగ్గా 10 అంకెలు — ఇది మీ ప్రత్యేక గుర్తింపు (ఒక నంబర్ ఒకసారి మాత్రమే).</div>
+        </div>
+
+        <div class="field">
+          <label>ఇమెయిల్ చిరునామా <span class="en">(Email Address)</span> *</label>
+          <input type="email" name="email" value="{{ form.email or '' }}" required>
+        </div>
+
+        <div class="field">
+          <label>ఆధార్ నంబర్ / ID <span class="en">(Aadhar / ID — optional)</span></label>
+          <input type="text" name="aadhar" value="{{ form.aadhar or '' }}">
+          <div class="hint">ధృవీకరణ కోసం సిఫార్సు చేయబడింది (ఐచ్ఛికం).</div>
+        </div>
+
+        <button type="submit" class="btn btn-block">పరీక్ష ప్రారంభించు »</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Restrict mobile field to digits only
+    document.querySelector('input[name="mobile"]').addEventListener('input', function (e) {
+      e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
+    });
+  </script>
+</body>
+</html>
