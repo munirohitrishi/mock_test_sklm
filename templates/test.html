@@ -11,9 +11,15 @@
 </head>
 <body>
   <div class="exam-header">
-    <div>
-      <div class="title">జ్యోతిరావు ఫూలే స్టడీ సర్కిల్, శ్రీకాకుళం — గ్రూప్-2 మాక్ టెస్ట్</div>
-      <div class="sub">భౌగోళిక శాస్త్రం &nbsp;|&nbsp; అభ్యర్థి: {{ student_name }}</div>
+    <div class="exam-brand">
+      <div class="brand-logo sm">
+        <span class="brand-mono">జ్యో</span>
+        <img src="{{ url_for('static', filename='img/jyotirao-phule.jpg') }}" alt="జ్యోతిరావు ఫూలే" onerror="this.style.display='none'">
+      </div>
+      <div>
+        <div class="title">జ్యోతిరావు ఫూలే స్టడీ సర్కిల్, శ్రీకాకుళం — గ్రూప్-2 మాక్ టెస్ట్</div>
+        <div class="sub">భౌగోళిక శాస్త్రం &nbsp;|&nbsp; అభ్యర్థి: {{ student_name }}</div>
+      </div>
     </div>
     <div id="timer" class="timer">--:--:--</div>
   </div>
