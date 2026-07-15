@@ -30,14 +30,59 @@ a { color: var(--primary); }
 
 /* ---------------- Header / brand ---------------- */
 .topbar {
+  position: relative;
   background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   color: #fff;
-  padding: 18px 20px;
+  padding: 18px 84px;
   text-align: center;
   box-shadow: var(--shadow);
 }
 .topbar h1 { margin: 0; font-size: 1.35rem; letter-spacing: .2px; }
 .topbar p { margin: 4px 0 0; opacity: .9; font-size: .95rem; }
+.topbar .brand-logo {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Circular brand photo with monogram fallback */
+.brand-logo {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex: 0 0 auto;
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+  border: 2px solid rgba(255, 255, 255, .8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.brand-logo .brand-mono {
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.15rem;
+  line-height: 1;
+}
+.brand-logo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.brand-logo.sm { width: 46px; height: 46px; border-width: 1.5px; }
+.brand-logo.sm .brand-mono { font-size: .9rem; }
+
+.exam-brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+
+@media (max-width: 560px) {
+  .topbar { padding: 16px 64px; }
+  .topbar .brand-logo { width: 48px; height: 48px; left: 10px; }
+  .topbar h1 { font-size: 1.1rem; }
+}
 
 /* ---------------- Layout for centered pages ---------------- */
 .wrap {
