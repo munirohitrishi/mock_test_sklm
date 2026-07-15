@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+mocktest.db
+mocktest.db-journal
+results.xlsx
+.env
