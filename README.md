@@ -56,6 +56,9 @@ Open `questions.json` and add more objects to the `questions` array, following t
 - Suggested topic distribution: 25 Physical, 25 Economic, 25 Human, 25 AP-specific.
 - The app automatically uses however many questions are in the file. The navigator and total are driven by the data.
 
+## Header photo (Jyotirao Phule)
+The header shows a circular photo in the top-left corner. Until an image file is present it displays a "జ్యో" monogram automatically. To show the actual portrait, save your image at `static/img/jyotirao-phule.jpg` (this is already wired up). To use a different filename, update the `filename='img/...'` reference in the four templates. Redeploy and the photo appears on every page.
+
 ## Downloading results
 Results are appended to `results.xlsx` in this folder after each submission — open it directly.
 There is also a protected download route:
