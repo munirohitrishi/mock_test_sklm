@@ -102,8 +102,19 @@
     if (status[i] === 0) status[i] = 1; // mark visited
 
     $("qNum").textContent = i + 1;
-    $("qTopic").textContent = q.topic || "";
-    $("qText").textContent = q.question;
+    $("qTopic").textContent = q.section || q.topic || "";
+    const qt = $("qText");
+    qt.innerHTML = "";
+    const qen = document.createElement("div");
+    qen.className = "q-en";
+    qen.textContent = q.question_en || q.question || "";
+    qt.appendChild(qen);
+    if (q.question_te) {
+      const qte = document.createElement("div");
+      qte.className = "q-te";
+      qte.textContent = q.question_te;
+      qt.appendChild(qte);
+    }
 
     const box = $("options");
     box.innerHTML = "";
@@ -125,7 +136,22 @@
       lbl.className = "lbl";
       lbl.textContent = OPTION_LABELS[key] + ")";
       const txt = document.createElement("span");
-      txt.textContent = q.options[key];
+      txt.className = "opt-txt";
+      const o = q.options[key];
+      if (o && typeof o === "object") {
+        const oe = document.createElement("div");
+        oe.className = "opt-en";
+        oe.textContent = o.en || "";
+        txt.appendChild(oe);
+        if (o.te) {
+          const ot = document.createElement("div");
+          ot.className = "opt-te";
+          ot.textContent = o.te;
+          txt.appendChild(ot);
+        }
+      } else {
+        txt.textContent = o;
+      }
       wrap.appendChild(input);
       wrap.appendChild(lbl);
       wrap.appendChild(txt);
