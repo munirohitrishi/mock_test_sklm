@@ -4,3 +4,6 @@ mocktest.db
 mocktest.db-journal
 results.xlsx
 .env
+_paper_src.pdf
+_pageimg/
+validate_marker.txt

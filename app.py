@@ -27,7 +27,7 @@ except ImportError:  # pragma: no cover
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(BASE_DIR, "mocktest.db")
-QUESTIONS_PATH = os.path.join(BASE_DIR, "questions.json")
+QUESTIONS_PATH = os.path.join(BASE_DIR, "questions_group2.json")
 RESULTS_XLSX = os.path.join(BASE_DIR, "results.xlsx")
 
 app = Flask(__name__)
@@ -42,6 +42,9 @@ with open(QUESTIONS_PATH, "r", encoding="utf-8") as f:
 
 META = _QDATA["meta"]
 QUESTIONS = _QDATA["questions"]
+# Always reflect the actual number of questions in the bank on the UI,
+# so the instructions/result pages stay correct as you expand toward 100.
+META["total_questions"] = len(QUESTIONS)
 # Fast lookup of correct answers by id (never sent to the client)
 ANSWER_KEY = {q["id"]: q["correct"] for q in QUESTIONS}
 TOPIC_BY_ID = {q["id"]: q.get("topic", "General") for q in QUESTIONS}
@@ -55,8 +58,9 @@ def _client_questions():
     for q in QUESTIONS:
         out.append({
             "id": q["id"],
-            "topic": q.get("topic", ""),
-            "question": q["question"],
+            "section": q.get("section", q.get("topic", "")),
+            "question_en": q.get("question_en", q.get("question", "")),
+            "question_te": q.get("question_te", ""),
             "options": q["options"],
         })
     return out
