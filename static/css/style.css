@@ -221,7 +221,13 @@ a { color: var(--primary); }
   min-height: 360px;
 }
 .q-meta { display: flex; justify-content: space-between; color: var(--muted); font-size: .9rem; margin-bottom: 10px; }
-.q-text { font-size: 1.18rem; font-weight: 600; margin-bottom: 20px; }
+.q-text { font-size: 1.15rem; font-weight: 600; margin-bottom: 20px; }
+.q-en { color: var(--text); }
+.q-te { color: var(--primary); margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--border); }
+.opt-txt { display: block; }
+.opt-en { font-weight: 600; }
+.opt-te { color: var(--muted); font-weight: 500; font-size: .95em; margin-top: 2px; }
+.option.selected .opt-te { color: #2e7d5b; }
 
 .option {
   display: flex;
